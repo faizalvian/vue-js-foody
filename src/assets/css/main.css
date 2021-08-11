@@ -2,6 +2,10 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.router-link{
+    text-decoration: none;
+}
+
 .router-link-exact-active{
     font-weight: bold;
 }
@@ -19,4 +23,19 @@
     width: 100%;
     height: 12vw;
     object-fit: cover;
+}
+
+.breadcrumb{
+    background-color: transparent;
+    padding: 0;
+}
+
+.breadcrumb-item.active{
+    font-weight: bold;
+    color: black;
+}
+
+.img-detail{
+    border-radius: 15px;
+    /* max-height: 600px; */
 }
