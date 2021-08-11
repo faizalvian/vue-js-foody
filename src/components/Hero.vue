@@ -11,9 +11,9 @@
                 For Your Life
               </h2>
               <p>Nikmati kemudahan pesan makanan dalam satu aplikasi.</p>
-              <button class="btn btn-success">
+              <router-link to="/menu" class="btn btn-success">
                 <b-icon-arrow-right></b-icon-arrow-right> Pesan Sekarang
-              </button>
+              </router-link>
             </div>
           </div>
         </div>
@@ -37,9 +37,9 @@
                 For Your Life
               </h2>
               <p>Nikmati kemudahan pesan makanan dalam satu aplikasi.</p>
-              <button class="btn btn-success">
+              <router-link to="/menu" class="btn btn-success">
                 <b-icon-arrow-right></b-icon-arrow-right> Pesan Sekarang
-              </button>
+              </router-link>
             </div>
           </div>
         </div>
