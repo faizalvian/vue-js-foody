@@ -8,4 +8,9 @@
 
 .btn-success, .badge-success{
     background-color: #6BE485;
+    border-color: #6BE485;
+}
+
+.card{
+    border-radius: 15px;
 }

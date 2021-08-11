@@ -1,6 +1,6 @@
 <template>
   <div>
-      <Navbar />
+    <Navbar />
     <h2>Daftar Menu</h2>
   </div>
 </template>
