@@ -86,11 +86,11 @@ export default {
     },
     pemesanan() {
       if (this.pesan.jumlah_pesanan) {
-        this.$router.push({ path: "/cart" })
         this.pesan.menu = this.menu;
         axios
           .post("http://localhost:3000/carts", this.pesan)
           .then(() => {
+            this.$router.push({ path: "/cart" })
             this.$toast.success("Berhasil masuk keranjang.", {
               type: "success",
               position: "top-right",

@@ -25,8 +25,8 @@
 
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <router-link class="nav-link" to="/keranjang">
-              Keranjang
+            <router-link class="nav-link" to="/cart">
+              My Cart
               <b-icon-bag></b-icon-bag>
               <span class="badge badge-success ml-2">{{
                 jumlah_pesanan.length
@@ -51,7 +51,7 @@ export default {
   methods: {
     setQty(data) {
       this.jumlah_pesanan = data;
-    },
+    }
   },
   mounted() {
     axios
