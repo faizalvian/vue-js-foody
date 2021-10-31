@@ -29,7 +29,7 @@
               My Cart
               <b-icon-bag></b-icon-bag>
               <span class="badge badge-success ml-2">{{
-                jumlah_pesanan.length
+                updateCart ? updateCart.length : jumlah_pesanan.length
               }}</span>
             </router-link>
           </li>
@@ -48,6 +48,7 @@ export default {
       jumlah_pesanan: [],
     };
   },
+  props:['updateCart'],
   methods: {
     setQty(data) {
       this.jumlah_pesanan = data;

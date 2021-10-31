@@ -1,6 +1,6 @@
 <template>
   <div class="cart">
-    <Navbar />
+    <Navbar :updateCart="pesanan"/>
     <div class="container">
       <div class="row mt-5">
         <div class="col">
@@ -27,6 +27,8 @@
             <table class="table">
               <thead>
                 <tr>
+                  <th scope="col"></th>
+                  <th scope="col">#</th>
                   <th scope="col">Menu</th>
                   <th scope="col">Description</th>
                   <th scope="col">Qty</th>
@@ -36,20 +38,25 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="pesanan in pesanan" :key="pesanan.id">
+                <tr v-for="(pesanan,index) in pesanan" :key="pesanan.id">
+                  <td>{{index+1}}</td>
+                  <td>
+                    <img :src="'../images/' + pesanan.menu.gambar" class="img-fluid shadow" style="max-height:100px">
+                  </td>
                   <td><strong>{{pesanan.menu.nama}}</strong></td>
-                  <td>{{pesanan.keterangan}}</td>
+                  <td>{{pesanan.keterangan ? pesanan.keterangan : "-"}}</td>
                   <td>{{pesanan.jumlah_pesanan}}</td>
-                  <td>Rp. {{pesanan.menu.harga}}</td>
-                  <td><strong>Rp. {{pesanan.jumlah_pesanan*pesanan.menu.harga}}</strong></td>
-                  <td class="text-danger"><b-icon-trash></b-icon-trash></td>
+                  <td align="right">Rp. {{pesanan.menu.harga.toLocaleString()}}</td>
+                  <td align="right"><strong>Rp. {{(pesanan.jumlah_pesanan*pesanan.menu.harga).toLocaleString()}}</strong></td>
+                  <td class="text-danger"><b-icon-trash @click="hapusKeranjang(pesanan.id)"></b-icon-trash></td>
                 </tr>
 
                 <tr>
-                  <td colspan="4" align="center">
+                  <td colspan="6" align="right">
                     <strong>Total Price</strong>
                   </td>
-                  <td><strong>Rp. {{totalHarga}}</strong></td>
+                  <td align="right"><strong>Rp. {{totalHarga.toLocaleString()}}</strong></td>
+                  <td></td>
                 </tr>
               </tbody>
             </table>
@@ -76,6 +83,24 @@ export default {
   methods: {
     setPesanan(data){
       this.pesanan = data;
+    },
+    hapusKeranjang(id){
+      axios
+      .delete("http://localhost:3000/carts/"+id)
+      .then(() => {
+        this.$toast.error("Berhasil hapus pesanan.", {
+          type: "error",
+          position: "top-right",
+          duration: 3000,
+          dismissible: true,
+        });
+
+        axios
+        .get("http://localhost:3000/carts")
+        .then((response) => this.setPesanan(response.data))
+        .catch((error) => console.log(error));
+      })
+      .catch((error) => console.log(error));
     }
   },
   mounted() {
